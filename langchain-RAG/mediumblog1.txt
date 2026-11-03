@@ -1,0 +1,79 @@
+# Murtaza Afzali — Full-Stack Developer & Autonomous AI Agent Engineer
+
+## Identity & Contact
+
+- **Full name:** Murtaza Afzali
+- **Born:** 2002, Ghazni, Afghanistan
+- **Currently based in:** Herat, Afghanistan
+- **Education:** B.Sc. in Software Engineering, Herat University (4th year, 8th semester)
+- **Email:** murtazaafzali13@gmail.com
+- **Phone / WhatsApp:** +93 783 000 247
+- **LinkedIn:** linkedin.com/in/murtaza-afzali-484446405
+- **GitHub:** github.com/MurtazaAfzali13
+
+## Professional Summary
+
+Murtaza Afzali is a Full-Stack Developer and AI Engineer who builds autonomous, agentic AI systems rather than simple prompt-response tools. His work centers on **LangGraph-based stateful agents** that reason across multiple steps, validate their own retrieved evidence, call tools, and fall back to live web search when internal knowledge is insufficient — rather than guessing or hallucinating an answer.
+
+He works across the full stack: **Python/FastAPI on the backend, Next.js/React/TypeScript on the frontend**, with Supabase/PostgreSQL for persistence and Pinecone for vector search. He designs from first principles — clean architectural boundaries, dependency-injectable chains, structured LLM outputs instead of fragile regex parsing, and test suites that never depend on real API keys.
+
+## Technical Skills
+
+**AI & Autonomous Systems (core expertise)**
+- Agent orchestration: LangGraph, LangChain — stateful, multi-actor graph workflows
+- Agentic patterns: Reflection/self-critique agents, Supervisor-and-worker routing, ReAct tool-calling loops, Human-in-the-Loop (HITL) approval gates
+- Retrieval architectures: Corrective RAG (CRAG), Self-RAG, anti-hallucination validation loops with live web-search fallback (Tavily API)
+- Vector search: Pinecone — namespace/metadata-based multi-tenant isolation, semantic embeddings
+- Structured LLM output via `with_structured_output` instead of free-form regex parsing
+
+**Frontend & UI/UX**
+- Next.js (App Router), React, TypeScript, JavaScript
+- Tailwind CSS, shadcn/ui
+- Vercel AI SDK — real-time streaming AI chat interfaces and generative UI
+
+**Backend & Infrastructure**
+- FastAPI — async Python services, Server-Sent Events (SSE) streaming
+- PostgreSQL, Supabase (incl. Row Level Security, RPC functions), SQLite/SQLModel
+- Clerk (JWT/RS256/JWKS authentication), Git/GitHub, Docker, Vercel
+
+## Flagship Projects
+
+### 1. VidBrain — Agentic Multi-Video Corrective RAG Platform
+A system that turns YouTube video transcripts into a queryable knowledge base, solving the problem where conventional video RAG hallucinates when a question falls outside the indexed content.
+
+- **Architecture:** Supervisor node routes each query as either single-video (pinned to one `video_id`) or general (aggregated across a user's full video catalog); a Retriever node performs metadata-filtered Pinecone search inside strict per-user namespaces; a Validator node grades retrieved context, and anything below the relevance threshold triggers a Tavily web-search fallback before generation.
+- **Precision timestamps:** every answer traces back to the exact `video_id` and timestamp it came from, so users can jump straight to the right moment in the source video.
+- **Chat persistence:** conversations are stored with automatic thread-title generation and non-blocking async I/O.
+- **Enterprise analytics dashboard:** a role-aware (Admin vs. Regular user) observability layer built on Clerk RS256 JWT verification and a single auditable Supabase RPC function, with timeframe filtering (Today/Week/Month/All) and LangGraph node-execution visualizations.
+- **Stack:** FastAPI, LangGraph, Pinecone, Tavily, Supabase, Clerk, Next.js.
+
+### 2. Doctor Copilot — AI Clinical Platform (Watan Hospital)
+An AI-assisted system for hospital doctors that turns a free-text (or dictated) encounter note into a checked, printable prescription.
+
+- **Extractor agent:** structured-output LLM turns the doctor's note into patient, diagnosis, and medication data.
+- **Safety Checker (RAG) agent:** cross-checks every newly prescribed medication against a Pinecone drug-interaction index and the patient's existing medications; high/critical-severity interactions block printing until a physician provides a mandatory clinical justification to override (fully audit-logged).
+- **Patient Records Chat Agent:** a ReAct tool-calling loop that answers natural-language questions about a patient or refers them to a colleague — every answer is grounded in a real Supabase lookup, never fabricated.
+- **Access control:** a treatment-relationship model enforced both at the Postgres Row-Level-Security layer and in application code, so a doctor can only see patients they actually treat.
+- **Extras:** voice dictation (Whisper via OpenRouter), a PDF prescription generator matching the hospital's exact letterhead, and a daily analytics dashboard.
+- **Testing:** 46/46 backend tests passing, fully mocked (no live API keys required).
+
+### 3. Enterprise Multi-Agent Strategy Engine (active development)
+A modular AI framework built on Clean Architecture and SOLID principles. A Supervisor node delegates tasks to specialized worker agents — Web Researcher, Document RAG, Fact-Checker — with Human-in-the-Loop checkpoints pausing execution for manual approval before any high-stakes action.
+
+## Experience & Track Record
+
+- **2023 – Present:** Full-Stack & AI Agent Engineer (freelance & independent projects) — architecting end-to-end intelligent systems that connect Next.js frontends (via Vercel AI SDK) to LangGraph/FastAPI backends.
+- **2022 – 2023:** Intensive full-stack foundation — mastered the modern JavaScript/TypeScript ecosystem before moving into AI backend architecture.
+- 2+ years of specialized AI/full-stack development experience
+- 15+ completed projects
+- Consistent international client collaboration with a strong satisfaction track record
+
+## Services Offered
+
+- **Autonomous AI & agent development** — custom LangGraph workflows: reflection agents, database-querying agents, multi-agent systems
+- **Full-stack web development** — high-performance apps with Next.js, TypeScript, shadcn/ui
+- **Intelligent chatbots & streaming UIs** — real-time, low-hallucination AI assistants with the Vercel AI SDK and FastAPI
+
+## Working Philosophy
+
+Murtaza builds technology as an intelligent partner rather than a lookup tool: systems that don't just fetch data, but reflect on it, validate it, and help solve real, complex problems — built methodically, from first principles, with production-grade rigor rather than shortcuts.
