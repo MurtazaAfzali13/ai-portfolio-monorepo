@@ -1,5 +1,13 @@
 venv/
+.venv/
+env/
 __pycache__/
 .git/
 .env
 test_setup.py
+*.pdf
+*.csv
+
+# اگر پوشه خاصی برای اسناد یا دیتابیس دارید خطوط زیر را از کامنت درآورید و نام دقیق را بنویسید:
+# data/
+# chromadb/

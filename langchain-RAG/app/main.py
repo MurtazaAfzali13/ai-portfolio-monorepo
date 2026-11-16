@@ -10,6 +10,7 @@ load_dotenv()
 
 from app.graph.rag import get_components 
 from app.routers.chat import router as chat_router 
+from app.routers.voice import router as voice_router
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -46,7 +47,7 @@ app.add_middleware(
 )
 
 app.include_router(chat_router)
-
+app.include_router(voice_router)
 @app.get("/health")
 async def health_check(request: Request):
     rag_ready = getattr(request.app.state, "rag_ready", False)

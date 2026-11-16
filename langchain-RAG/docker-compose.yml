@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: agentic_backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env  # خواندن امن متغیرها و تزریق به کانتینر
+    volumes:
+      # این ولوم باعث می‌شود تغییرات کد را در لحظه ببینی و نیازی به build مجدد نباشد
+      - .:/app_root
