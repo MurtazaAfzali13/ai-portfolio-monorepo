@@ -100,22 +100,22 @@ export default function ChatModal() {
         </div>
       )}
 
-      {/* Modal */}
+      {/* Modal: centered on screen */}
       {isChatOpen && (
         <div
           role="dialog"
           aria-modal="true"
           aria-label="AI Assistant chat"
           onClick={closeChat}
-          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center sm:justify-end sm:pr-6 bg-black/70 backdrop-blur-sm animate-in fade-in duration-200 p-0 sm:p-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-3 backdrop-blur-sm animate-in fade-in duration-200 sm:p-6"
         >
           <div
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-md h-[92vh] sm:h-[90vh] max-h-[750px] rounded-t-2xl sm:rounded-xl shadow-2xl animate-in slide-in-from-bottom-10 duration-300"
+            className="relative h-[90vh] max-h-[750px] w-full max-w-md rounded-3xl shadow-2xl animate-in fade-in zoom-in-95 duration-300"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-t-2xl sm:rounded-xl opacity-75 blur"></div>
-            <div className="absolute inset-[2px] bg-gray-800 rounded-t-2xl sm:rounded-xl"></div>
-            <div className="relative h-full">
+            {/* soft orange glow behind the chat */}
+            <div className="absolute -inset-1 rounded-[28px] bg-gradient-to-br from-orange-400 to-orange-600 opacity-40 blur-xl" />
+            <div className="relative h-full overflow-hidden rounded-3xl">
               <Chat onClose={closeChat} />
             </div>
           </div>
