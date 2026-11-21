@@ -5,6 +5,7 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import type { Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { UserButton } from "@clerk/nextjs";
 import {
   ArrowDown,
   CheckCheck,
@@ -527,6 +528,7 @@ export default function ChatPage({ onClose }: ChatPageProps) {
   return (
     <div className="relative flex h-full w-full flex-col overflow-hidden bg-gradient-to-b from-[#fff6ef] via-[#ffeadb] to-[#ffdcc4] text-[#3b2a20] shadow-2xl ring-1 ring-orange-200/60 sm:rounded-3xl">
       {/* header */}
+     {/* header */}
       <header className="flex shrink-0 items-center justify-between px-4 py-3.5 sm:px-5">
         <div className="flex items-center gap-3">
           <div className="relative size-11">
@@ -544,7 +546,15 @@ export default function ChatPage({ onClose }: ChatPageProps) {
           <h2 className="text-[16px] font-semibold text-[#3b2a20]">Murtaza AI Agent</h2>
         </div>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1.5">
+        <UserButton
+            appearance={{
+              elements: {
+                avatarBox: "size-8 ring-2 ring-orange-400/70",
+              },
+            }}
+          />
+
           {hasConversation && (
             <button
               type="button"
@@ -556,6 +566,7 @@ export default function ChatPage({ onClose }: ChatPageProps) {
               <RotateCcw className="size-[18px]" />
             </button>
           )}
+
           {onClose && (
             <button
               type="button"

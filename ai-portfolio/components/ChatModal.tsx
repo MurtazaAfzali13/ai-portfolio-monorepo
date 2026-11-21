@@ -3,10 +3,12 @@
 
 import { useState, useEffect, useCallback } from "react";
 import dynamic from "next/dynamic";
+import { useAuth, SignInButton } from "@clerk/nextjs";
 
 const Chat = dynamic(() => import("@/components/Chat"), { ssr: false });
 
 export default function ChatModal() {
+  const { isLoaded, isSignedIn } = useAuth();
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [showTeaser, setShowTeaser] = useState(false);
   const [teaserDismissed, setTeaserDismissed] = useState(false);
@@ -113,10 +115,40 @@ export default function ChatModal() {
             onClick={(e) => e.stopPropagation()}
             className="relative h-[90vh] max-h-[750px] w-full max-w-md rounded-3xl shadow-2xl animate-in fade-in zoom-in-95 duration-300"
           >
-            {/* soft orange glow behind the chat */}
             <div className="absolute -inset-1 rounded-[28px] bg-gradient-to-br from-orange-400 to-orange-600 opacity-40 blur-xl" />
             <div className="relative h-full overflow-hidden rounded-3xl">
-              <Chat onClose={closeChat} />
+              {!isLoaded ? (
+                <div className="flex h-full items-center justify-center bg-gradient-to-b from-[#fff6ef] via-[#ffeadb] to-[#ffdcc4]">
+                  <div className="size-8 animate-spin rounded-full border-4 border-orange-500 border-t-transparent" />
+                </div>
+              ) : isSignedIn ? (
+                <Chat onClose={closeChat} />
+              ) : (
+                <div className="flex h-full flex-col items-center justify-center bg-gradient-to-b from-[#fff6ef] via-[#ffeadb] to-[#ffdcc4] p-8 text-center text-[#3b2a20]">
+                  <div className="mb-4 flex size-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-3xl shadow-lg shadow-orange-500/30">
+                    🔒
+                  </div>
+                  <h3 className="text-xl font-bold text-[#2b1a10]">Sign in to Chat</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-stone-600">
+                    Please sign in to ask questions about Murtaza’s projects and experience. Each account includes 2 free demo questions.
+                  </p>
+                  <SignInButton mode="redirect">
+                    <button
+                      type="button"
+                      className="mt-6 w-full rounded-2xl bg-gradient-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold text-white shadow-md shadow-orange-600/30 transition-transform hover:scale-[1.02] active:scale-95"
+                    >
+                      Sign In / Create Account
+                    </button>
+                  </SignInButton>
+                  <button
+                    type="button"
+                    onClick={closeChat}
+                    className="mt-3 text-xs font-medium text-stone-500 hover:text-orange-700"
+                  >
+                    Maybe later
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>

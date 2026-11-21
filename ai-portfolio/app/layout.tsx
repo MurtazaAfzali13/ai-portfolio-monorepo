@@ -4,6 +4,7 @@ import MouseTrail from "@/components/MouseTrail";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: {
@@ -52,6 +53,7 @@ export default function RootLayout({
 }) {
   return (
     // The inline colour is a safety net: even before the stylesheet applies, the page is dark.
+    <ClerkProvider>
     <html lang="en" style={{ backgroundColor: "#0a0624" }}>
       <body>
         <a
@@ -69,5 +71,6 @@ export default function RootLayout({
         <Footer />
       </body>
     </html>
+    </ClerkProvider>
   );
 }
